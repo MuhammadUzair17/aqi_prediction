@@ -5,6 +5,7 @@ requests>=2.31.0
 
 # Hopsworks
 hopsworks==4.2.*
+pyarrow>=14.0.0
 
 # Machine Learning
 catboost>=1.2.0
