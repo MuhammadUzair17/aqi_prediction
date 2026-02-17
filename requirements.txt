@@ -1,0 +1,15 @@
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+
+# Hopsworks
+hopsworks==4.2.*
+
+# Machine Learning
+catboost>=1.2.0
+xgboost>=2.0.0
+scikit-learn>=1.3.0
+
+# Environment
+python-dotenv>=1.0.0

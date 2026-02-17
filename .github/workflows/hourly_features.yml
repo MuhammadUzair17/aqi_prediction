@@ -1,0 +1,47 @@
+name: Hourly Feature Pipeline
+
+on:
+  schedule:
+    # Runs every hour at minute 0
+    # Cron format: minute hour day month day-of-week
+    - cron: '0 * * * *'
+  
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  fetch-and-upload:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run feature pipeline
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+        run: |
+          python pipelines/feature_pipeline.py
+      
+      - name: Pipeline status
+        if: success()
+        run: |
+          echo "✅ Feature pipeline completed successfully!"
+          echo "📊 New AQI data uploaded to Hopsworks"
+      
+      - name: Pipeline failed
+        if: failure()
+        run: |
+          echo "❌ Feature pipeline failed!"
+          echo "Check logs above for error details"
