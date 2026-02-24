@@ -1,0 +1,30 @@
+name: Network Test
+
+on:
+  workflow_dispatch
+
+jobs:
+  test-connection:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Test Internet Connection
+        run: |
+          echo "=== Testing Internet Connection ==="
+          ping -c 3 google.com || echo "Ping failed"
+          
+      - name: Test DNS Resolution
+        run: |
+          echo "=== Testing DNS for Hopsworks ==="
+          nslookup c.app.hopsworks.ai || echo "DNS lookup failed"
+          dig c.app.hopsworks.ai || echo "Dig failed"
+          
+      - name: Test HTTPS Connection
+        run: |
+          echo "=== Testing HTTPS to Hopsworks ==="
+          curl -v https://c.app.hopsworks.ai || echo "Connection failed"
+          
+      - name: Test OpenWeather API
+        run: |
+          echo "=== Testing OpenWeather API ==="
+          curl -v "http://api.openweathermap.org/data/2.5/weather?q=Karachi&appid=test" || echo "OpenWeather failed"
