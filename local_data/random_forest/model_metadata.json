@@ -1,0 +1,10 @@
+{
+  "model_name": "karachi_aqi_predictor_randomforest",
+  "version": 1,
+  "created": "2026-02-24",
+  "metrics": {
+    "avg_r2": 0.8320,
+    "avg_mae": 11.52,
+    "train_r2": 0.8980
+  }
+}

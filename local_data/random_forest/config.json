@@ -1,0 +1,30 @@
+{
+  "model_name": "RandomForest",
+  "trained_at": "2026-02-17T04:04:25.683354",
+  "features": [
+    "aqi_rolling_max_24h",
+    "pm10",
+    "pm25",
+    "aqi",
+    "aqi_rolling_mean_3h",
+    "aqi_lag_1h",
+    "aqi_rolling_mean_6h",
+    "co",
+    "aqi_rolling_mean_12h",
+    "aqi_lag_3h",
+    "o3",
+    "aqi_lag_6h"
+  ],
+  "targets": [
+    "target_aqi_1d",
+    "target_aqi_2d",
+    "target_aqi_3d"
+  ],
+  "train_rows": 3360,
+  "test_rows": 840,
+  "split": "shuffle",
+  "scaling": "none",
+  "avg_r2": 0.8314,
+  "tune_r2": 0.7996,
+  "avg_mae": 13.652
+}

@@ -1,0 +1,10 @@
+{
+  "model_name": "karachi_aqi_predictor_xgboost",
+  "version": 1,
+  "created": "2026-02-24",
+  "metrics": {
+    "avg_r2": 0.8450,
+    "avg_mae": 10.85,
+    "train_r2": 0.9050
+  }
+}
